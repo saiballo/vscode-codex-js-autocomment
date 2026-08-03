@@ -1,0 +1,101 @@
+{
+	"name": "codex-js-autocomment",
+	"displayName": "codex-js-autocomment",
+	"description": "Comments selected JavaScript functions using Codex and project AGENTS.md rules.",
+	"version": "0.0.1",
+	"icon": "images/icon.png",
+	"publisher": "saibal",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.125.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"keywords": [
+		"codex",
+		"jsdoc",
+		"javascript",
+		"node",
+		"comments",
+		"documentation",
+		"autocomment",
+		"ai",
+		"developer tools",
+		"agents"
+	],
+	"bugs": {
+		"url": "https://github.com/saiballo/vscode-codex-js-autocomment/issues",
+		"email": "lorenzo.forti@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/saiballo/vscode-codex-js-autocomment.git"
+	},
+	"homepage": "https://github.com/saiballo/vscode-codex-js-autocomment",
+	"extensionDependencies": [
+		"openai.chatgpt"
+	],
+	"main": "./extension.js",
+	"activationEvents": [],
+	"contributes": {
+		"commands": [
+			{
+				"command": "codex-js-autocomment.commentSelection",
+				"title": "Codex JS Autocomment: Comment selected function"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "codex-js-autocomment.commentSelection",
+				"key": "ctrl+alt+c",
+				"when": "editorTextFocus && editorHasSelection"
+			}
+		],
+		"configuration": {
+			"title": "Codex JS Autocomment",
+			"properties": {
+				"codexJsAutocomment.instructionsSource": {
+					"type": "string",
+					"default": "settings",
+					"enum": [
+						"settings",
+						"agents"
+					],
+					"enumDescriptions": [
+						"Usa le istruzioni configurate nel setting Codex JS Autocomment: Instructions.",
+						"Usa il file AGENTS.md nella root del workspace. Se non esiste, usa le istruzioni configurate nel setting."
+					],
+					"description": "Sorgente delle istruzioni da passare a Codex."
+				},
+				"codexJsAutocomment.instructions": {
+					"type": "string",
+					"default": "Aggiungi JSDoc conciso e utile immediatamente sopra la funzione, classe o metodo interessato.\nSpiega lo scopo, i vincoli rilevanti, gli effetti collaterali e i comportamenti non evidenti.\nUsa @param solo quando esistono parametri.\nUsa @returns solo quando la funzione restituisce un valore significativo.\nUsa @throws solo quando la funzione può realmente generare un'eccezione.\nUsa tipi precisi.\nNon modificare l'implementazione, salvo richiesta esplicita.\nEvita documentazione eccessiva per getter, setter o funzioni autoesplicative.\nRestituisci solo il codice aggiornato, senza spiegazioni.",
+					"editPresentation": "multilineText",
+					"description": "Prompt aggiuntivo passato a Codex quando commenta la selezione."
+				},
+				"codexJsAutocomment.commentLanguage": {
+					"type": "string",
+					"default": "italiano",
+					"description": "Lingua da usare per i commenti generati."
+				},
+				"codexJsAutocomment.codexCommand": {
+					"type": "string",
+					"default": "codex",
+					"description": "Comando usato per eseguire Codex. Se lasciato a \"codex\", l'estensione prova anche a usare il binario incluso nell'estensione ChatGPT di VS Code."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"package": "npx @vscode/vsce package"
+	},
+	"files": [
+		"extension.js",
+		"images",
+		"README.md",
+		"README_it.md",
+		"LICENSE.txt"
+	]
+}
