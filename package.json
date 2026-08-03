@@ -2,7 +2,7 @@
 	"name": "codex-js-autocomment",
 	"displayName": "codex-js-autocomment",
 	"description": "Comments selected JavaScript functions using Codex and project AGENTS.md rules.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"icon": "images/icon.png",
 	"publisher": "saibal",
 	"license": "MIT",
