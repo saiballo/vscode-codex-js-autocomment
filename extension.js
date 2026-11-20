@@ -5,7 +5,7 @@
 * Created: 02/08/2026 (18:36:52)
 * Created by: Lorenzo Saibal Forti <lorenzo.forti@gmail.com>
 *
-* Last update: 03/08/2026 (11:40:32)
+* Last update: 14/10/2026 (19:46:26)
 * Updated by: Lorenzo Saibal Forti <lorenzo.forti@gmail.com>
 *
 * Copyleft: 2026 - Tutti i diritti riservati
@@ -339,6 +339,13 @@ const splitCommand = (commandLine) => {
 	return parts;
 };
 
+/**
+ * Restituisce il primo gruppo di cattura definito, gestendo espressioni regolari
+ * con alternative in cui alcuni gruppi possono essere assenti.
+ *
+ * @param {RegExpMatchArray} match Risultato della corrispondenza dell'espressione regolare.
+ * @returns {string} Il primo valore definito tra i gruppi di cattura e la corrispondenza completa.
+ */
 const getFirstDefinedMatch = (match) => {
 
 	if (typeof match[1] !== "undefined" && match[1] !== null) {
